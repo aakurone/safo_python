@@ -35,19 +35,19 @@ subroutine multisource_2dmap(d,sxmin,sxmax,symin,symax,xmax,n,rmin,rdep,inten)
   dy=dx
   inten=0.0
 
-  print *
-  print '(a)','----------------------------------'
-  print fmr,'d     ',d
-  print fmi,'sxmin ',sxmin
-  print fmi,'sxmax ',sxmax
-  print fmi,'symin ',symin
-  print fmi,'symax ',symax
-  print fmr,'xmax  ',xmax
-  print fmi,'n     ',n
-  print fmr,'rmin  ',rmin
-  print fmi,'rdep  ',rdep
-  print '(a)','----------------------------------'
-  print *
+  ! print *
+  ! print '(a)','----------------------------------'
+  ! print fmr,'d     ',d
+  ! print fmi,'sxmin ',sxmin
+  ! print fmi,'sxmax ',sxmax
+  ! print fmi,'symin ',symin
+  ! print fmi,'symax ',symax
+  ! print fmr,'xmax  ',xmax
+  ! print fmi,'n     ',n
+  ! print fmr,'rmin  ',rmin
+  ! print fmi,'rdep  ',rdep
+  ! print '(a)','----------------------------------'
+  ! print *
   
   xloop: do ix=-n,n
      yloop: do iy=-n,n
