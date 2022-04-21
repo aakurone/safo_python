@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 import multisource_2dmap
 
 func=np.log     # Apply this function to the data before visualization
-cm='summer'     # Color map
+cm='viridis'    # Color map, try 'jet', 'viridis', 'summer'
 
 sxmin=-2        # Source lattice is [sxmin,symin]×[symin,sxmin] 
 sxmax=2         #  with d as the lattice constant
