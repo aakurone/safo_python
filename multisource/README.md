@@ -1,8 +1,5 @@
 # safo_python
 
-*SäFo Python*
+*Multisource*
 
-Some Python scripts and Fortran subroutines for computational demos for course [FYS1004 Säteilykentät ja fotonit](https://studies.helsinki.fi/courses/cu/hy-CU-117533904-2021-08-01), Department of Physics, University of Helsinki.
-
-Fortran subroutines are built so that they can be compiled by `f2py` as Python modules.
-
+Interference pattern in the time-averaged intensity of radiation from multiple sources. For more information, see folder `tex`. 
