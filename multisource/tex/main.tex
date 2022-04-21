@@ -1,0 +1,63 @@
+\documentclass[fleqn,10pt]{olplainarticle}
+% Use option lineno for line numbers 
+\usepackage{bigints}
+\usepackage{amsmath}
+
+\title{Time-averaged intensity of interference from multiple sources}
+
+\author[1]{Antti Kuronen}
+\affil[1]{Department of Physics, University of Helsinki, Pietari Kalmin katu 2, Helsinki 00014, Finland}
+\keywords{interference, computational physics, Fortran, Python}
+
+\begin{abstract}
+This document describes the calculation of time-averaged (over one period) intensity of multiple sources. Used in the course FYS1004 Säteilykentät ja fotonit, University of Helsinki.
+\end{abstract}
+
+\begin{document}
+
+\flushbottom
+\maketitle
+\thispagestyle{empty}
+
+%\section*{Time-averaged intensity of interference from multiple sources}
+
+Amplitude of source $i$ with amplitude $E_i$ and at distance $r_i$ and at time $t$
+\begin{equation}
+A_i(r_i,t) = E_i \cos(2\pi r_i + 2\pi t)
+\end{equation}
+Here we have set wavelength and frequency to unity: $\lambda=f=1$.
+
+We need to sum over the sources to get the total amplitude and integrate the square of the total amplitude over one period ($P=1/f=1$) to obtain the time-averaged intensity:
+
+\begin{equation}
+I(\mathbf{r}) = \bigintsss_0^1 \left[ \sum_{i=1}^n A_i(r_i,t) \right] ^2 dt = 
+\bigintsss_0^1 \left[ \sum_{i=1}^n E_i \cos(2\pi r_i + 2\pi t) \right] ^2 dt 
+\end{equation}
+Here $r_i$ is now the distance between point $\mathbf{r}$ and the location of source $i$.
+
+Plugging this in \textsc{Maple} the integral can be calculated exactly:
+\begin{equation}
+I(\mathbf{r}) = 2 (S_1^2 + S_2^2 - S_2 S_3) + \frac{1}{2} S_3^2 
+\end{equation}
+where
+\begin{align}
+S_1  & =  \sum_{i=1}^n E_i \sin(\pi r_i)\cos(\pi r_i) \\
+S_2  & =  \sum_{i=1}^n E_i\cos^2(\pi r_i) \\
+S_3  & =  \sum_{i=1}^n E_i \\
+\end{align}
+
+As an example set $n=2$. This gives us 
+\begin{equation}
+I(\mathbf{r}) = \frac{E_1^2}{2} + \frac{E_2^2}{2} + E_1 E_2 \cos(2\pi r_1 - 2\pi r_2).
+\end{equation}
+Assuming $E_1=E_2=1$ we get
+\begin{equation}
+I(\mathbf{r}) = 1 + \cos(2\pi \Delta r),
+\end{equation}
+where $\Delta r = r_2-r_1$. (This is excatly the expression in \texttt{doublesource\_2dmap.f90}.)
+
+Calculation of the interference pattern is implemented as a Fortran subroutine in source code file \texttt{multisource\_2dmap.f90} where you can set up multiple sources in a 2D square lattice. The file can be compiled as a Python module (for instructions, see the comments in the file) and an usage example is given in \texttt{multisource.py}.
+
+\printbibliography
+
+\end{document}
