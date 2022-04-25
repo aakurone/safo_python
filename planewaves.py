@@ -27,8 +27,10 @@ def plot_planewaves(xmax=50,nw=5,k=1,n=1000,savefig=False,cmap='jet'):
 
 
 if __name__=='__main__':
-    for nw in range(2,10):
+    plt.close('all')
+    plt.figure(figsize=(10,10))
+    for nw in range(2,11):
         plot_planewaves(xmax=100,nw=nw,n=1000,savefig=False)
-        plt.pause(2)
+        plt.pause(5)
 
     
